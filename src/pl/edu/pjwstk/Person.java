@@ -56,20 +56,21 @@ public class Person {
         }
     }
 
-    private void validateString(String text) {
+    private void validateString(String text, String field) {
+        String messageError = "The value entered cannot be";
         if (text == null)
-            throw new RuntimeException(String.format("%s: The value entered cannot be null", getClass()));
+            throw new RuntimeException(String.format("%s: %s null", field, messageError));
         if (text.length() == 0)
-            throw new RuntimeException(String.format("%s: The entered value cannot be empty", getClass()));
+            throw new RuntimeException(String.format("%s: %s empty", field, messageError));
     }
 
     private void setName(String name) {
-        validateString(name);
+        validateString(name, "Name");
         this.name = name;
     }
 
     private void setSurname(String surname) {
-        validateString(surname);
+        validateString(surname, "Surname");
         this.surname = surname;
     }
 
@@ -80,7 +81,7 @@ public class Person {
     }
 
     private void setAddress(String address) {
-        validateString(address);
+        validateString(address, "Address");
         this.address = address;
     }
 
